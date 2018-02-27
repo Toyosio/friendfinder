@@ -4,11 +4,9 @@ var path = require ('path')
 
 // Initialize app.
 var app = express();
-
-// PORT is either the port provided by Heroku via process.env.PORT or 3000.
 var PORT = process.env.PORT || 3000;
 
-// Set up middleware.
+// Set up parsing stuff
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -20,4 +18,6 @@ require('./app/routing/apiRoutes')(app);
 require('./app/routing/htmlRoutes')(app);
 
 // Start listening.
-app.listen(process.env.PORT || 3000);
+app.listen(PORT, function () {
+  console.log("Listening On Port: " +PORT);
+});
