@@ -17,5 +17,6 @@ var friendList = [
       "4"
     ]
   }
-}
+]
+
 module.exports = friendList;

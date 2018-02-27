@@ -1,6 +1,6 @@
-var express = require ('express');
-var bodyParser = require ('body-parser')
-var path = require ('path')
+var express = require('express');
+var bodyParser = require('body-parser')
+var path = require('path')
 
 // Initialize app.
 var app = express();
@@ -8,9 +8,13 @@ var PORT = process.env.PORT || 3000;
 
 // Set up parsing stuff
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use(bodyParser.json({
+  type: "application/vnd.api+json"
+}));
 app.use(express.static(__dirname + '/app/public'));
 
 // Import routes.
@@ -19,5 +23,5 @@ require('./app/routing/htmlRoutes')(app);
 
 // Start listening.
 app.listen(PORT, function () {
-  console.log("Listening On Port: " +PORT);
+  console.log("Listening On Port: " + PORT);
 });
