@@ -1,12 +1,13 @@
+//npm
 var express = require('express');
-var bodyParser = require('body-parser')
-var path = require('path')
+var bodyParser = require('body-parser');
+var path = require('path');
 
-// Initialize app.
+// Initialize app
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-// Set up parsing stuff
+// parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -17,11 +18,11 @@ app.use(bodyParser.json({
 }));
 app.use(express.static(__dirname + '/app/public'));
 
-// Import routes.
+// routes
 require('./app/routing/apiRoutes')(app);
 require('./app/routing/htmlRoutes')(app);
 
-// Start listening.
+//listening
 app.listen(PORT, function () {
   console.log("Listening On Port: " + PORT);
 });
